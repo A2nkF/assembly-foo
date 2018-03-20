@@ -57,27 +57,27 @@ readString:
   add     esp, 0x10       ; Restore stack
 
 openFile:
-  mov     eax, 0x5            ; sys_open
+  mov     eax, 0x5           ; sys_open
   push    dword 0x0          ; Mode = 0
   push    dword 0x2          ; Read/Write flag
   push    dword PATH         ; Path
-  sub     esp, 0x4            ; Extra 4 bytes on stack needed by int 0x80
+  sub     esp, 0x4           ; Extra 4 bytes on stack needed by int 0x80
   int     0x80
   add     esp, 0x10
   mov     ebx, eax
 
 writeToFile:
-  mov     eax, 0x4            ; sys_open
+  mov     eax, 0x4           ; sys_open
   push    dword 0x64         ; read 100 characters
   push    dword STRING       ; string to read from
   push    dword ebx          ; dunno
-  sub     esp, 0x4            ; Extra 4 bytes on stack needed by int 0x80
+  sub     esp, 0x4           ; Extra 4 bytes on stack needed by int 0x80
   int     0x80
   add     esp, 0x10
 
 printMessage:
-  push    dword msg3.len  ; pushes the lenght of the message on the stack
-  push    dword msg3      ; pushes the message itself on the stack
+  push    dword msg3.len     ; pushes the lenght of the message on the stack
+  push    dword msg3         ; pushes the message itself on the stack
   push    dword 0x1
   mov     eax, 0x4        ; sys_write
   sub     esp, 0x4
@@ -85,11 +85,11 @@ printMessage:
   add     esp, 0x10
 
 Exit:
-  mov     eax, 0x1        ; sys_exit
-  push    0x0             ; exit code 0
-  sub     esp, 0xc        ; reset esp
-  int     0x80            ; syscall
-
+  mov     eax, 1
+  push    0x0
+  sub     esp, 4
+  int     0x80
+  add     esp, 0xc
 
 section .bss              ; defines buffer size
   PATH: resd 0x64
