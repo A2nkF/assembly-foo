@@ -20,8 +20,6 @@ readPath:
   push    dword 0x64      ; Read 100 characters
   push    dword PATH      ; Input buffer
   push    dword 0x0       ; stdin
-  mov     eax, 0x3        ; sys_read
-  sub     esp, 0x4        ; Extra 4 bytes on stack needed by int 0x80
   int     0x80
   add     esp, 0x10
 
