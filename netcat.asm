@@ -21,15 +21,9 @@ promptUser:
 
 ;int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
 connectSocket:
-    push    ipaddr.len
-    push    ipaddr
-    push    0
-    push    connect
-    mov     eax, 258  ;sys_socketcall
-    sub     esp, 4
-    int     0x80
-    add     esp, 4
-
+    push    dword ipaddr.len
+    push    dword ipaddr
+    push    
 
 readInput:
     and     esp, -16      ; Make sure stack is 16 byte aligned at program start
