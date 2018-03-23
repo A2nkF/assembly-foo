@@ -1,2 +1,4 @@
 # assembler-foo
 Random assembler foo
+
+## DO NOT EXPECT HELPFUL COMMIT MESSAGES OR FUNCTIONING CODE
