@@ -20,10 +20,14 @@ promptUser:
     add     esp, 16
 
 ;int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
-connectSocket:
-    push    dword ipaddr.len
-    push    dword ipaddr
-    push    
+connectScoket:
+    push    dword addrlen
+    push    dword addr
+    push    0x0
+    mov     eax, 258
+    sub     esp, 4
+    int     0x80
+    add     esp, 4
 
 readInput:
     and     esp, -16      ; Make sure stack is 16 byte aligned at program start
@@ -64,8 +68,8 @@ section .data             ; inline data goes here
 msg:    db      "Output: ";, 0x0a; string of bytes called "Hello, world"; 0x0a is the code for \n
 .len:   equ     $ - msg   ; determin the lenght of the string by subtracting
 
-ipaddr:   db      "0.0.0.0", 0x0; IP address
-.len:   equ      $ - ipaddr
+addr:   db      "127.0.0.1", 0x0; IP address
+addrlen:   equ      $ - addr
 
 port:   db      "1234", 0x0; Port number
 .len:   equ      $ - port
