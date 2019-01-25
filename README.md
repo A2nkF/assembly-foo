@@ -1,4 +1,4 @@
-# x86 Assembler-foo
+# x86 Assembly projects
 
 ## Description
 Some of my random Assembler projects.
