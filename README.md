@@ -1,7 +1,7 @@
 # x86 Assembly projects
 
 ## Description
-Some of my random Assembler projects.
+Some of my random Assembly projects.
 
 BTW I don't know whether this code will run on your machine(I am doing my syscalls manually so you may have to adjust them to your OS).  
 
